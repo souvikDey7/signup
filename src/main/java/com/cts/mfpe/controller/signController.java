@@ -43,7 +43,7 @@ public class signController {
 		ModelAndView mv=new ModelAndView("signUp");
 		return mv;
 	}
-	@PostMapping("/showNew")
+/*	@PostMapping("/showNew")
 	public ModelAndView show(@RequestParam String name,@RequestParam String password,Model m)
 	{
 		userData userdata=new userData(name,password);
@@ -86,5 +86,5 @@ public class signController {
 				m.addAttribute("status","password is not wrong");
 				return mv;
 			}
-}
+}*/
 }
