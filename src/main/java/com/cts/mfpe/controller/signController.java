@@ -17,8 +17,8 @@ import com.cts.mfpe.model.userData;
 import com.cts.mfpe.service.signServiceImpls;
 
 
-//@RestController
-@Controller
+@RestController
+//@Controller
 //@RequestMapping("welcome")
 public class signController {
 	
@@ -26,60 +26,66 @@ public class signController {
 	signServiceImpls SignServiceImpls;
 	
 	@GetMapping("/")
-	public String enter()
+	public ModelAndView enter()
 	{	
-		return "front";
+		ModelAndView mv=new ModelAndView("front");
+		return mv;
 	}
 	@GetMapping("/login")
-	public String log(Model m)
+	public ModelAndView log(Model m)
 	{
+		ModelAndView mv=new ModelAndView("login");
 		m.addAttribute("error","Login in");		
-		return "login";
+		return mv;
 	}
 	@GetMapping("/signup")
-	public String signUp()
+	public ModelAndView signUp()
 	{
-	return "signUp";
+		ModelAndView mv=new ModelAndView("signUp");
+	return mv;
 	}
 	@PostMapping("/showNew")
-	public String show(@RequestParam String name,@RequestParam String password,Model m)
+	public ModelAndView show(@RequestParam String name,@RequestParam String password,Model m)
 	{
 		userData userdata=new userData(name,password);
 		if(SignServiceImpls.save(userdata))
 		{
+			ModelAndView mv=new ModelAndView("welcome");
 		m.addAttribute("status","created");
 		m.addAttribute("name",name);
-		return "welcome";
+		return mv;
 		}
 		else
 		{
-			//ModelAndView mv=new ModelAndView("signUp");
+			ModelAndView mv=new ModelAndView("signUp");
 			m.addAttribute("error","Username is already pressent");
-			//return mv;
-			return "signUp";
+			return mv;
 		}
 	}
 	
 	@PostMapping("/show")
-	public String shownew(@RequestParam String name,@RequestParam String password,Model m)
+	public ModelAndView shownew(@RequestParam String name,@RequestParam String password,Model m)
 	{
 		userData userdata=new userData(name,password);
 		List<userData> l=SignServiceImpls.findByName(userdata);
 			if(l.size()==0)
 			{
+				ModelAndView mv=new ModelAndView("login");
 				m.addAttribute("status","Username is not pressent");
-				return "login";
+				return mv;
 			}
 			else if(l.get(0).getPassword().equals(password))
 			{
+				ModelAndView mv=new ModelAndView("welcome");
 				m.addAttribute("name",name);
 				m.addAttribute("status","login");
-				return "welcome";	
+				return mv;	
 			}
 			else
 			{
+				ModelAndView mv=new ModelAndView("login");
 				m.addAttribute("status","password is not wrong");
-				return "login";
+				return mv;
 			}
 }
 }
