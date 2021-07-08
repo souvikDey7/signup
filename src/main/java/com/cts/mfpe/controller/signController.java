@@ -4,6 +4,7 @@ package com.cts.mfpe.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +17,8 @@ import com.cts.mfpe.model.userData;
 import com.cts.mfpe.service.signServiceImpls;
 
 
-@RestController
+//@RestController
+@Controller
 @RequestMapping("welcome")
 public class signController {
 	
@@ -24,67 +26,60 @@ public class signController {
 	signServiceImpls SignServiceImpls;
 	
 	@GetMapping("/")
-	public ModelAndView enter()
-	{
-		ModelAndView mv=new ModelAndView("front");
-		return mv;
+	public String enter()
+	{	
+		return "front";
 	}
 	@GetMapping("/login")
-	public ModelAndView log(Model m)
+	public String log(Model m)
 	{
-		m.addAttribute("error","Login in");
-		
-		ModelAndView mv=new ModelAndView("login");	
-		return mv;
+		m.addAttribute("error","Login in");		
+		return "login";
 	}
 	@GetMapping("/signup")
-	public ModelAndView signUp()
+	public String signUp()
 	{
-		ModelAndView mv=new ModelAndView("signUp");
-		return mv;
+	return "signUp";
 	}
-/*	@PostMapping("/showNew")
-	public ModelAndView show(@RequestParam String name,@RequestParam String password,Model m)
+	@PostMapping("/showNew")
+	public String show(@RequestParam String name,@RequestParam String password,Model m)
 	{
 		userData userdata=new userData(name,password);
 		if(SignServiceImpls.save(userdata))
 		{
-		ModelAndView mv=new ModelAndView("welcome");
 		m.addAttribute("status","created");
 		m.addAttribute("name",name);
-		return mv;
+		return "welcome";
 		}
 		else
 		{
-			ModelAndView mv=new ModelAndView("signUp");
+			//ModelAndView mv=new ModelAndView("signUp");
 			m.addAttribute("error","Username is already pressent");
-			return mv;
+			//return mv;
+			return "signUp";
 		}
 	}
 	
 	@PostMapping("/show")
-	public ModelAndView shownew(@RequestParam String name,@RequestParam String password,Model m)
+	public String shownew(@RequestParam String name,@RequestParam String password,Model m)
 	{
 		userData userdata=new userData(name,password);
 		List<userData> l=SignServiceImpls.findByName(userdata);
 			if(l.size()==0)
 			{
-				ModelAndView mv=new ModelAndView("login");
 				m.addAttribute("status","Username is not pressent");
-				return mv;
+				return "login";
 			}
 			else if(l.get(0).getPassword().equals(password))
 			{
-				ModelAndView mv=new ModelAndView("welcome");
 				m.addAttribute("name",name);
 				m.addAttribute("status","login");
-				return mv;	
+				return "welcome";	
 			}
 			else
 			{
-				ModelAndView mv=new ModelAndView("login");
 				m.addAttribute("status","password is not wrong");
-				return mv;
+				return "login";
 			}
-}*/
+}
 }
