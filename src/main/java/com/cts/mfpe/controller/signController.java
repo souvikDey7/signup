@@ -19,7 +19,7 @@ import com.cts.mfpe.service.signServiceImpls;
 
 //@RestController
 @Controller
-@RequestMapping("welcome")
+//@RequestMapping("welcome")
 public class signController {
 	
 	@Autowired
