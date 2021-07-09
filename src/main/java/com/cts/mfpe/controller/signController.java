@@ -35,7 +35,7 @@ public class signController {
 	public ModelAndView log(Model m)
 	{
 		ModelAndView mv=new ModelAndView("login");
-		m.addAttribute("error","Login in");		
+		m.addAttribute("error","Login..");		
 		return mv;
 	}
 	@GetMapping("/signup")
