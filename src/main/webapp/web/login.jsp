@@ -23,7 +23,7 @@ body{
 	<div class="mb-3">
 <form class="login-form" action="show" method="post">
   <div class="mb-3">
-    <label for="InputName" class="form-label">Name</label>
+    <label for="InputName" class="form-label">UserName</label>
     <input type="text" class="form-control shadow p-2 mb-4 bg-body rounded" placeholder="Name" name="name" aria-describedby="emailHelp" required="" .../>
     ${status }
   </div>
