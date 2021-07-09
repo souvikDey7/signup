@@ -24,7 +24,7 @@ body{
 	<div class="mb-3">
 <form action="showNew" method="post" class="login-form" name="login" onsubmit="return check()">
   <div class="mb-3">
-    <label for="name" class="form-label">Enter Name</label>
+    <label for="name" class="form-label">Enter UserName</label>
     <input type="text" for="name" class="form-control" name="name" aria-describedby="emailHelp" required="" .../>
     ${error}
   </div>
