@@ -14,10 +14,10 @@ body{
 </style>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Todo Site</title>
 </head>
 <body class="p-3 mb-2 bg-dark">
-	<div class="container d-flex align-items-center justify-content-center ">
+	<div class="container d-flex  img-fluid align-items-center justify-content-center ">
 		<div class="card-body">
 			<table class="table table-dark table-hover">
 				<th class="display-3">To Do list</th>
