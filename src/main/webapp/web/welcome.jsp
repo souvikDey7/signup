@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Todo Site</title>
 <style>
 .container{
     height: 100%;
@@ -34,9 +34,10 @@ body{
     			<h5 class="card-title display-5">Todo update</h5>
     			<h3 class="blockquote-footer display-6">write whatever u want next to do..</h3>
    				 <div class="d-grid gap-2">
-    					<textarea class="d-grid gap-2 shadow p-3 mb-5 bg-body rounded"  name="todo" type="textbox" value="${i}" required="" ></textarea>
+    					<textarea class="d-grid gap-2 shadow p-3 mb-5 bg-body rounded" rows="7" name="todo" type="textbox" value="${i}" required="" ></textarea>
     			</div>
     			<button class="btn btn-outline-success btn-lg">Save</button>
+    			<span class="display-7 blockquote-footer"><b>${m}</b></span>
   		</div>
 	</div>
 </form>
@@ -45,6 +46,23 @@ body{
 			<input class="btn btn-lg btn-outline-info" type="submit" value="Check List">
 		</div>
 		</form>
+<div class="card-body">
+			<table class="table table-dark table-hover">
+				<th class="display-3">Recent list</th>
+					<c:forEach var="i" items="${list}">
+ 					<tr>
+						 <td style="max-width: 400px;" class="lead d-inline-block text-truncate">${i.getValue()}</td>
+ 						<form action="delete" method="post">
+ 							<td><button name="delete" value="${i.getKey()}" class="btn btn-danger">Delete</button></td>
+ 						</form>
+ 						<form action="update" method="post">
+ 							<td><button name="update" value="${i.getKey()}" class="btn btn-success">Update</button></td>
+ 						</form>
+ 					</tr>
+					</c:forEach>
+			</table>
+		</div>
+		
 </div>
 
 </body>

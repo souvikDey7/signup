@@ -11,7 +11,7 @@ import com.cts.mfpe.model.Todo;
 public interface TodoService {
 	public Todo find(int id);
 	public List<Todo> getAll(String name);
-	public void save(Todo todo);
+	public boolean save(Todo todo);
 	public void delete(int id);
 	public Optional<Todo> Update(int id);
 }

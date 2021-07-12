@@ -1,6 +1,8 @@
 package com.cts.mfpe.controller;
 
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +29,18 @@ public class ListController {
 	private signController signcontroller;
 	
 	@PostMapping("/save")
-	public ModelAndView listAdd(Model m,@RequestParam String todo)
+	public ModelAndView listAdd(Model m,@RequestParam String todo,ModelMap li)
 	{
 		ModelAndView mv=new  ModelAndView("welcome");
 		Todo td=new Todo(signcontroller.getUserName(),todo);
-		todoServiceImpls.save(td);
-		m.addAttribute("m","success");
+		if(!todo.equals("null"))
+		{
+		if(todoServiceImpls.save(td))
+		m.addAttribute("m","succesfully saved");
+		else
+			m.addAttribute("m","could not save!! internel error");
+		}
+		li.addAttribute("list",this.RecentData());
 		return mv;
 	}
 	@GetMapping("/todo")
@@ -59,11 +67,26 @@ public class ListController {
 	return new ModelAndView("welcome");
 	}
 	
-	public Map<Integer,String> getData()
+	private Map<Integer,String> getData()
 	{ 
 		a.clear();
 		for(Todo i:todoServiceImpls.getAll(signcontroller.getUserName()))
 			a.put(i.getId(),i.getTodo());
+		return a;
+	}
+	protected Map<Integer,String> RecentData()
+	{ 
+		a.clear();
+		List<Todo>rec =todoServiceImpls.getAll(signcontroller.getUserName());
+		Collections.reverse(rec);
+		int j=0;
+		for(Todo i:rec)
+		{
+			a.put(i.getId(),i.getTodo());
+			j++;
+			if(j>4)
+				break;
+		}
 		return a;
 	}
 }

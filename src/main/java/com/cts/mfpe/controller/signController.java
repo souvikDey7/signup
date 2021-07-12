@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +21,10 @@ import com.cts.mfpe.service.signServiceImpls;
 public class signController {
 	
 	@Autowired
-	signServiceImpls SignServiceImpls;
+	private signServiceImpls SignServiceImpls;
+	
+	@Autowired
+	private ListController listController;
 	
 	private String Username;
 	
@@ -63,7 +67,7 @@ public class signController {
 		}
 	}
 	@PostMapping("/show")
-	public ModelAndView shownew(@RequestParam String name,@RequestParam String password,Model m)
+	public ModelAndView shownew(@RequestParam String name,@RequestParam String password,Model m,ModelMap li)
 	{
 		userData userdata=new userData(name,password);
 		List<userData> l=SignServiceImpls.findByName(userdata);
@@ -78,6 +82,7 @@ public class signController {
 				ModelAndView mv=new ModelAndView("welcome");
 				m.addAttribute("name",name);
 				Username=name;
+				li.addAttribute("list",listController.RecentData());
 				m.addAttribute("status","successfully login");
 				return mv;	
 			}
@@ -88,7 +93,7 @@ public class signController {
 				return mv;
 			}
 	}
-	public String  getUserName()
+	protected String  getUserName()
 	{
 		return Username;
 	}

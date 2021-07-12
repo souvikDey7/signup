@@ -27,8 +27,16 @@ public class TodoServiceImpls implements TodoService {
 	}
 
 	@Override
-	public void save(Todo todo) {
+	public boolean save(Todo todo) {
+		try {
 		todoDao.save(todo);
+		return true;
+		}
+		catch(Exception e)
+		{
+			return false;
+		}
+
 	}
 
 	@Override

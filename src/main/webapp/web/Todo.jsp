@@ -20,7 +20,14 @@ body{
 	<div class="container d-flex  img-fluid align-items-center justify-content-center ">
 		<div class="card-body">
 			<table class="table table-dark table-hover">
-				<th class="display-3">To Do list</th>
+				<th>
+					<span class="display-3">ToDo list</span>
+				<td class="align-middle">
+						<form action="save" method="post" >
+							<button name="todo" value="null" class="btn btn-outline-warning display-8 shadow"  aria-current="page">Home</button>
+						</form>
+				</td>
+				</th>
 					<c:forEach var="i" items="${list}">
  					<tr>
 						 <td style="max-width: 400px;" class="lead d-inline-block text-truncate">${i.getValue()}</td>
@@ -28,8 +35,9 @@ body{
  							<td><button name="delete" value="${i.getKey()}" class="btn btn-danger">Delete</button></td>
  						</form>
  						<form action="update" method="post">
- 							<td><button name="update" value="${i.getKey()}" class="btn btn-success">Update</button></td></tr>
+ 							<td><button name="update" value="${i.getKey()}" class="btn btn-success">Update</button></td>
  						</form>
+ 					</tr>
 					</c:forEach>
 			</table>
 		</div>
