@@ -17,7 +17,6 @@ public class TodoServiceImpls implements TodoService {
 	
 	@Override
 	public Todo find(int id) {
-		// TODO Auto-generated method stub
 		return todoDao.getById(id);
 	}
 

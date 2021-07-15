@@ -31,7 +31,7 @@ body{
     			<h5 class="card-title display-5">Todo update</h5>
     			<h3 class="blockquote-footer display-6">write whatever u want next to do..</h3>
    				 <div class="d-grid gap-2">
-    					<textarea class="d-grid gap-2 shadow p-3 mb-5 bg-body rounded" rows="7" name="todo" type="textbox" value="${i}" required="" ></textarea>
+    					<textarea class="d-grid gap-2 shadow p-3 mb-5 bg-body rounded" rows="7" name="todo" type="textbox" required="" >${i}</textarea>
     			</div>
     			<button class="btn btn-outline-success btn-lg">Save</button>
     			<span class="display-7 blockquote-footer"><b>${m}</b></span>
