@@ -25,15 +25,7 @@ public class signController {
 	
 	@Autowired
 	private ListController listController;
-	
 	private String Username;
-	
-	@GetMapping("/")
-	public ModelAndView enter()
-	{	
-		ModelAndView mv=new ModelAndView("front");
-		return mv;
-	}
 	@GetMapping("/login")
 	public ModelAndView log(Model m)
 	{
@@ -54,7 +46,7 @@ public class signController {
 		if(SignServiceImpls.save(userdata))
 		{
 			ModelAndView mv=new ModelAndView("welcome");
-		m.addAttribute("status","successfully created");
+		m.addAttribute("status","Successfully created");
 		m.addAttribute("name",name);
 		Username=name;
 		return mv;
@@ -83,7 +75,7 @@ public class signController {
 				m.addAttribute("name",name);
 				Username=name;
 				li.addAttribute("list",listController.RecentData());
-				m.addAttribute("status","successfully login");
+				m.addAttribute("status","Successfully login");
 				return mv;	
 			}
 			else

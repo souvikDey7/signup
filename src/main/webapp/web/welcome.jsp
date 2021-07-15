@@ -16,17 +16,14 @@ body{
 </style>
 </head>
 <body class="bg-dark">
-<!-- <div class="container-fluid"> -->
-<!-- <nav class="navbar navbar-dark bg-dark"> -->
-<!--     	<a class="navbar-brand nav-item">SD_7</a> -->
-<!--     	<form class="d-flex justify-content-center"> -->
-<%--     		<a class="navbar-brand nav" aria-current="page">${status}</a> --%>
-<%--     		<a class=" navbar-brand active" aria-current="page" >${name}</a> --%>
-<%--       		<a class="navbar-brand active" >${m}</a> --%>
-<!--    	     </form> -->
-<!--  </nav> -->
-<!--  </div> -->
-
+<nav class="navbar navbar-dark btn-secondary bg-gradient">
+    	<a class="navbar-brand nav-item">SD_7</a>
+    		<a class="navbar-brand ustify-content-center display-4" aria-current="page">${status}... Welcome! ${name}</a>
+    		<form  action="/"  >
+    		<button class="btn btn-outline-danger" type="submit">Log Out</button>
+    		</form>
+ </nav>
+<br>
 <div class="container align-items-center justify-content-center ">
 <form  action="save" method="post">
 	<div class="card w-75 d-grid gap-2 col-6 mx-auto">

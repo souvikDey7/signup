@@ -4,29 +4,29 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<style>
-body{
-    height: 100vh;
-} 
-.container{
-    height: 100%;
-}
-</style>
-
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Todo Site</title>
 </head>
-<body class="p-3 mb-2 bg-dark">
+<body class="bg-dark">
+<nav class=" navbar navbar-light btn-secondary bg-gradient">
+  <div class="container-fluid">
+    <a class="navbar-brand">SD_7</a>
+    <div class="d-flex">
+    <form action="save" method="post" >
+				<button name="todo" value="null" class="btn btn-outline-warning display-8 shadow"  aria-current="page">Home</button>
+	</form>
+    <form action="/">
+      <button class="btn btn-outline-danger" type="submit">Log Out</button>
+     </form>
+    </div>
+  </div>
+</nav>
+<nav class="navbar navbar-dark btn-secondary bg-gradient"></nav>
 	<div class="container d-flex  img-fluid align-items-center justify-content-center ">
 		<div class="card-body">
 			<table class="table table-dark table-hover">
 				<th>
 					<span class="display-3">ToDo list</span>
-				<td class="align-middle">
-						<form action="save" method="post" >
-							<button name="todo" value="null" class="btn btn-outline-warning display-8 shadow"  aria-current="page">Home</button>
-						</form>
-				</td>
 				</th>
 					<c:forEach var="i" items="${list}">
  					<tr>
